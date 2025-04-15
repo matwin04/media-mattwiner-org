@@ -171,7 +171,7 @@ app.get('/mediamanager/movies', requireAuth, async (req, res) => {
         if (!r.ok) throw new Error(`Failed to fetch movies: ${r.status}`);
         const result = await r.json();
 
-        res.render('mediamanager-movies', { title: 'Movies', items: result.Items || [] });
+        res.render('movies', { title: 'Movies', items: result.Items || [] });
     } catch (err) {
         console.error(err);
         res.status(500).send('Failed to load movies');
@@ -188,7 +188,7 @@ app.get('/mediamanager/shows', requireAuth, async (req, res) => {
         });
         if (!r.ok) throw new Error(`Failed to fetch shows: ${r.status}`);
         const result = await r.json();
-        res.render('mediamanager-shows', { title: 'TV Shows', items: result.Items || [] });
+        res.render('shows', { title: 'TV Shows', items: result.Items || [] });
     } catch (err) {
         console.error(err);
         res.status(500).send('Failed to load shows');
@@ -204,7 +204,7 @@ app.get('/mediamanager/music',requireAuth, async (req, res) => {
         });
         if (!r.ok) throw new Error(`Failed to fetch music: ${r.status}`);
         const result = await r.json();
-        res.render("mediamanager-music",{
+        res.render("music",{
             title: 'Music',
             items: result.Items || []
         });
@@ -221,7 +221,7 @@ app.get('/mediamanager/music/albums', requireAuth, async (req, res) => {
             headers: { 'X-Emby-Token': token }
         });
         const data = await r.json();
-        res.render('mediamanager-music-albums', { title: 'Music Albums', items: data.Items || [], token });
+        res.render('music-albums', { title: 'Music Albums', items: data.Items || [], token });
     } catch (err) {
         console.error(err);
         res.status(500).send('Failed to load albums');
@@ -234,7 +234,7 @@ app.get('/mediamanager/music/artists', requireAuth, async (req, res) => {
             headers: { 'X-Emby-Token': token }
         });
         const data = await r.json();
-        res.render('mediamanager-music-artists', { title: 'Artists', items: data.Items || [], token });
+        res.render('music-artists', { title: 'Artists', items: data.Items || [], token });
     } catch (err) {
         console.error(err);
         res.status(500).send('Failed to load artists');
@@ -248,7 +248,7 @@ app.get('/mediamanager/music/artist/:id/albums', requireAuth, async (req, res) =
             headers: { 'X-Emby-Token': token }
         });
         const data = await r.json();
-        res.render('mediamanager-albums', {
+        res.render('music-albums', {
             title: 'Albums by Artist',
             items: data.Items || [],
             token,
@@ -267,7 +267,7 @@ app.get('/mediamanager/music/artist/:artistId/album/:albumId', requireAuth, asyn
             headers: { 'X-Emby-Token': token }
         });
         const data = await r.json();
-        res.render('mediamanager-tracks', {
+        res.render('music-tracks', {
             title: 'Tracks in Album',
             items: data.Items || [],
             backLink: `/mediamanager/music/artist/${artistId}/albums`
@@ -314,7 +314,7 @@ app.get('/mediamanager/shows/:id', requireAuth, async (req, res) => {
         });
         if (!showRes.ok) throw new Error(`Show fetch failed: ${showRes.status}`);
         const show = await showRes.json();
-        res.render('mediamanager-episodes', {
+        res.render('episodes', {
             title: `Episodes – ${show.Name}`,
             show,
             items: episodesData.Items || []
@@ -370,7 +370,7 @@ app.get('/mediamanager/play/:id',requireAuth, async (req, res) => {
         });
         if (!response.ok) throw new Error(`Player fetch failed: ${response.status}`);
         const item = await response.json();
-        res.render('mediamanager-player', {
+        res.render('player', {
             title: `Playing ${item.Name}`,
             item,
             token
