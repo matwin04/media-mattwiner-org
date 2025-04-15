@@ -4,6 +4,7 @@
   "main": "server.js",
   "type": "module",
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "accepts": "^2.0.0",
     "ansi-regex": "^6.1.0",
     "ansi-styles": "^6.2.1",

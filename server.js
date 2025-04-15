@@ -10,7 +10,7 @@ import postgres from "postgres";
 import multer from "multer";
 import session from "express-session";
 import cookieParser from 'cookie-parser';
-
+import { inject } from "@vercel/analytics"
 
 // Load environment variables
 dotenv.config();
@@ -22,7 +22,7 @@ const VIEWS_DIR = path.join(__dirname, "views");
 const PARTIALS_DIR = path.join(VIEWS_DIR, "partials");
 console.log("Starting server...");
 console.log("MY NAME IS REI AYANAMI HOWS IT HANGING...");
-
+inject();
 const app = express();
 const PORT = process.env.PORT || 8083;
 
@@ -94,6 +94,7 @@ async function getLibraryId(collectionType, token, userId) {
 
 // Home
 app.get('/', (req, res) => {
+    inject();
     res.render('index', { title: 'MATTWINER.ORG' });
 });
 
