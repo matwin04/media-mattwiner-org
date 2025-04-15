@@ -129,7 +129,7 @@ app.post('/mediamanager/login', async (req, res) => {
         res.cookie('userId', userId, { httpOnly: true });
 
         console.log('✅ Login successful:', { userId });
-        res.redirect('/mediamanager');
+        res.redirect('/');
     } catch (error) {
         console.error('Login error:', error);
         res.status(401).send('Login failed.');
