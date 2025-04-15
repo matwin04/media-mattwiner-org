@@ -351,7 +351,7 @@ app.get('/mediamanager/user/:userId', requireAuth, async (req, res) => {
             const type = item.Type;
             typeCounts[type] = (typeCounts[type] || 0) + 1;
         }
-        res.render('mediamanager-user', {
+        res.render('user', {
             title: `${user.Name}'s Profile`,
             user,
             typeCounts: JSON.stringify(typeCounts) // send to chart
