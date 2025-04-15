@@ -8,14 +8,53 @@
 <body>
 {{> navbar}}
 
-<div class="container mt-4 text-center">
-  <h2>{{item.Name}}</h2>
 
-  <video id="videoPlayer" controls autoplay>
-    <source src=https://media.mattwiner.org/Videos/{{item.Id}}/stream.mp4?api_key={{token}}">
-  </video>
-  <p>{{Description}}</p>
-  <h2>{{IndexNumber}}</h2>
-</div>
+  <div class="container border-primary">
+
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4 border-primary">
+              <img class="img-fluid rounded-start" src="https://media.mattwiner.org/Items/{{item.Id}}/Images/Primary?maxHeight=120" alt="{{Name}}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{item.Name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{item.ProductionYear}}</h6>
+                <p class="card-text">{{item.Overview}}</p>
+                <p class="card-text">{{item.Container}}</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <video width="100%" id="videoPlayer" controls autoplay>
+              <source src=https://media.mattwiner.org/Videos/{{item.Id}}/stream.mp4?api_key={{token}}">
+            </video>
+          </div>
+        </div>
+      </div>
+
+<!--<div class="container">
+  <div class="grid">
+    <div class="card-image">
+      <video width="100%" id="videoPlayer" controls autoplay>
+        <source src=https://media.mattwiner.org/Videos/{{item.Id}}/stream.mp4?api_key={{token}}">
+      </video>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="https://media.mattwiner.org/Items/{{item.Id}}/Images/Primary?maxHeight=120" height="100" width="100" alt="{{Name}}">
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">{{item.Name}}</p>
+          <p class="subtitle is-6">{{item.ProductionYear}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
 </body>
 </html>
