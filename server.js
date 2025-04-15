@@ -20,7 +20,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const VIEWS_DIR = path.join(__dirname, "views");
 const PARTIALS_DIR = path.join(VIEWS_DIR, "partials");
-
+console.log("Starting server...");
+console.log("MY NAME IS REI AYANAMI HOWS IT HANGING...");
 
 const app = express();
 const PORT = process.env.PORT || 8083;
